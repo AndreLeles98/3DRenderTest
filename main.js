@@ -1,6 +1,8 @@
 var lastUpdate = Date.now();
 var myInterval = setInterval(tick, 0);
 
+const loader = new GLTFLoader();
+
 function start(){
 	scene = THREE.Scene();
 	scene.background = new THREE.Color(0xFFFF00);
@@ -8,6 +10,7 @@ function start(){
 	camera = new THREE.PerspectiveCamera(40, window.innerWidth/window.innerHeight, 1, 5000);
 	camera.rotation.y = 45/180*Math.PI;
 	camera.position.x = 800;
+	scene.add(camera);
 	
 	
 	globalLight = new THREE.AmbientLight(0xffffff, 100);
@@ -18,8 +21,9 @@ function start(){
 	loader = new THREE.GLTFLoader();
 	loader.load("helpCube.gltf", function(gltf){
 		scene.add( gltf.scene );
-		renderer.render(scene, camera);
 	});
+	
+	renderer.render(scene, camera);
 }
 
 function update() {
