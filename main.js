@@ -1,11 +1,6 @@
 var lastUpdate = Date.now();
 var myInterval = setInterval(tick, 0);
 
-var scene;
-var camera;
-var globalLight;
-var renderer;
-
 function start(){
 	scene = THREE.Scene();
 	scene.background = new THREE.Color(0xFFFF00);
@@ -22,7 +17,7 @@ function start(){
 	document.body.appendChild(renderer.domElement);
 	loader = new THREE.GLTFLoader();
 	loader.load("helpCube.gltf", function(gltf){
-		scene.add(gltf.scene);
+		scene.add( gltf.scene );
 		renderer.render(scene, camera);
 	});
 }
